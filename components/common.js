@@ -20,7 +20,7 @@ const Common = ({
   return (
     <View style={styles.container}>
       <View style={styles.logoContainer}>
-        { titleText !== "Yash ka App" && (
+        { titleText !== "Bamboo" && (
           <TouchableOpacity onPress={handleBack} style={styles.backButton}>
             <Text style={styles.backButtonText}>Back</Text>
           </TouchableOpacity>
@@ -94,8 +94,9 @@ const styles = StyleSheet.create({
     paddingTop: 40, // Adjusted paddingTop
   },
   logo: {
-    width: 100,
-    height: 100,
+    width: 60,
+    height: 60,
+    marginTop: 8,
   },
   backButton: {
     padding: 16,

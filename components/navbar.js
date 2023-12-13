@@ -15,8 +15,10 @@ const navbar = () => {
       <TouchableOpacity onPress={handleBack} style={styles.backButton}>
         <Text style={styles.backButtonText}>Back</Text>
       </TouchableOpacity>
-      <Image source={logo} style={styles.logo} resizeMode="contain" />
-      <Title titleText={"Yash ka App"} />
+      <View style={styles.titleContainer}>
+        <Image source={logo} style={styles.logo} resizeMode="contain" />
+        <Title titleText={"Bamboo"} />
+      </View>
     </View>
   );
 };
@@ -26,10 +28,17 @@ export default navbar;
 const styles = StyleSheet.create({
   logoContainer: {
     flexDirection: "row",
-    gap: 16,
-    justifyContent: "center",
+    gap: 12,
+    justifyContent: "space-between",
     alignItems: "center",
     paddingTop: 40, // Adjusted paddingTop
+  },
+  titleContainer : {
+    display: "flex",
+    flexDirection: "row",
+    alignItems: "center",
+    gap: 12,
+    marginRight: 80,
   },
   logo: {
     width: 60,

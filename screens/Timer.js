@@ -34,7 +34,7 @@ export default Timer;
 
 const styles = StyleSheet.create({
   container: {
-    paddingTop: 50, // Adjusted paddingTop
+    paddingTop: 20, // Adjusted paddingTop
     paddingHorizontal: 20,
     height: "100%",
   },

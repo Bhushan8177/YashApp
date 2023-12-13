@@ -79,14 +79,6 @@ const DataForm = () => {
             }
             style={styles.input}
           />
-
-          {/* <Button
-            mode="contained"
-            onPress={handleFormSubmit}
-            style={styles.button}
-          >
-            Submit
-          </Button> */}
           <TouchableOpacity
             onPress={() => {
               navigation.navigate("Precautions");

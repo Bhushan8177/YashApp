@@ -10,7 +10,7 @@ const Home = () => {
   const banner = "https://media.giphy.com/media/RR32PdmXEwkuzZFKSa/giphy.gif"
     return (
     <Common
-      titleText="Yash ka App"
+      titleText="Bamboo"
       route="DataForm"
       banner={banner}
       buttonText="Start"
