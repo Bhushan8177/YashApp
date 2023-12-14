@@ -3,7 +3,7 @@ import React from "react";
 import Home from "../screens/home";
 import DataForm from "../screens/dataForm";
 import Precautions from "../screens/precautions";
-import Timer from "../screens/Timer";
+import Timer from "../screens/timer";
 
 const Stack = createStackNavigator();
 
