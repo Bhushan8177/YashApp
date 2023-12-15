@@ -20,13 +20,13 @@ const Common = ({
   return (
     <View style={styles.container}>
       <View style={styles.logoContainer}>
-        { titleText !== "Bamboo" && (
+        { titleText !== "Bamboo Pre-treatment" && (
           <TouchableOpacity onPress={handleBack} style={styles.backButton}>
             <Text style={styles.backButtonText}>Back</Text>
           </TouchableOpacity>
         )}
         <Image source={logo} style={styles.logo} resizeMode="contain" />
-        <Title titleText={titleText} />
+        <Title  />
       </View>
       {subTitle && <Text style={styles.subTitle}>{subTitle}</Text>}
       <View style={styles.bannerContainer}>
@@ -64,7 +64,7 @@ const styles = StyleSheet.create({
     height: "100%",
   },
   title: {
-    fontSize: 36,
+    fontSize: 18,
     fontWeight: "600",
     alignSelf: "center",
   },
@@ -94,8 +94,8 @@ const styles = StyleSheet.create({
     paddingTop: 40, // Adjusted paddingTop
   },
   logo: {
-    width: 60,
-    height: 60,
+    width: 80,
+    height: 80,
     marginTop: 8,
   },
   backButton: {

@@ -16,8 +16,8 @@ const navbar = () => {
         <Text style={styles.backButtonText}>Back</Text>
       </TouchableOpacity>
       <View style={styles.titleContainer}>
-        <Image source={logo} style={styles.logo} resizeMode="contain" />
-        <Title titleText={"Bamboo"} />
+        {/* <Image source={logo} style={styles.logo} resizeMode="contain" /> */}
+        <Title />
       </View>
     </View>
   );

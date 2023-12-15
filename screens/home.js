@@ -10,13 +10,12 @@ const Home = () => {
   const banner = "https://media.giphy.com/media/RR32PdmXEwkuzZFKSa/giphy.gif"
     return (
     <Common
-      titleText="Bamboo"
+      titleText="Bamboo Pre-treatment"
       route="DataForm"
       banner={banner}
       buttonText="Start"
       logo={logo}
     />
-
   );
 };
 

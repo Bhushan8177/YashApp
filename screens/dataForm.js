@@ -1,12 +1,9 @@
 import { Image, StyleSheet, View, TouchableOpacity, Text } from "react-native";
 import React, { useState } from "react";
-import Title from "../components/title";
 import { useNavigation } from "@react-navigation/native";
 import { TextInput, Button } from "react-native-paper";
-import Common from "../components/common";
-import logo from "../assets/logo.png";
 import Navbar from "../components/navbar";
-import Precautions from "./precautions";
+
 
 const DataForm = () => {
   const [formData, setFormData] = useState({
@@ -29,25 +26,12 @@ const DataForm = () => {
   return (
     <>
       <View style={styles.container}>
-        {/* <Common
-        titleText={"Yash ka Ap"}
-        route={"Home"}
-        buttonText={"Next"}
-        logo={logo}
-      /> */}
-        {/* <View style={styles.logoContainer}>
-          <TouchableOpacity onPress={handleBack} style={styles.backButton}>
-            <Text style={styles.backButtonText}>Back</Text>
-          </TouchableOpacity>
-          <Image source={logo} style={styles.logo} resizeMode="contain" />
-          <Title titleText={"Yash ka App"} />
-        </View> */}
         <Navbar />
 
         {/* Form Section */}
         <View style={styles.formContainer}>
           <TextInput
-            label="Username"
+            label="Username (नाव)"
             value={formData.username}
             onChangeText={(text) =>
               setFormData((prevData) => ({ ...prevData, username: text }))
@@ -56,7 +40,7 @@ const DataForm = () => {
           />
 
           <TextInput
-            label="bambooSpecies"
+            label="bambooSpecies (बांबूची प्रजात)"
             value={formData.bambooSpecies}
             onChangeText={(text) =>
               setFormData((prevData) => ({ ...prevData, bambooSpecies: text }))
@@ -64,7 +48,7 @@ const DataForm = () => {
             style={styles.input}
           />
           <TextInput
-            label="Chemical Weight (in kgs)"
+            label="Chemical Weight (घन वजन) (in litres) "
             value={formData.chemicalWeight}
             onChangeText={(text) =>
               setFormData((prevData) => ({ ...prevData, chemicalWeight: text }))
@@ -72,7 +56,7 @@ const DataForm = () => {
             style={styles.input}
           />
           <TextInput
-            label="Bamboo Weight (in kgs)"
+            label="Bamboo Weight (बांबूची वजन) (in kgs) "
             value={formData.bambooWeight}
             onChangeText={(text) =>
               setFormData((prevData) => ({ ...prevData, bambooWeight: text }))
@@ -138,7 +122,7 @@ const styles = StyleSheet.create({
     padding: 16,
     borderRadius: 16,
     alignItems: "center",
-    marginTop: 350,
+    marginTop: 300,
   },
   buttonText: {
     fontSize: 24,
