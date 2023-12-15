@@ -1,23 +1,120 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Common from "../components/common";
-import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import {
+  Image,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  TouchableHighlight,
+  View,
+} from "react-native";
 import { useNavigation } from "@react-navigation/native";
-import Title from "../components/title";
-import finish from "../assets/finish.png";
 import Navbar from "../components/navbar";
-import { FlatList } from "react-native-gesture-handler";
+import { Timer } from "react-native-stopwatch-timer";
+import { Button, TextInput } from "react-native-paper";
 
-const Timer = () => {
+const TimerPro = () => {
   const navigation = useNavigation();
+  const seconds = 1000;
+  const [isTimerStart, setIsTimerStart] = useState(false);
+  const [resetTimer, setResetTimer] = useState(false);
+  const [formData, setFormData] = useState({
+    hours: 0,
+    minutes: 0,
+  });
+  const [timerDuration, setTimerDuration] = useState(
+    formData.hours * 60 * 60 + formData.minutes * 60
+  );
+
+  const totalDuration = () => {
+    // const hours = parseInt(formData.hours);
+    // const minutes = parseInt(formData.minutes);
+    // setTimerDuration(hours * 60 * 60 + minutes * 60);
+    // console.log("Timer", timerDuration);
+    setIsTimerStart(false);
+    setResetTimer(true);
+  };
+
+  useEffect(() => {
+    // Calculate total duration in seconds when formData.hours or formData.minutes change
+    const totalSeconds =
+      parseInt(formData.hours) * 60 * 60 + parseInt(formData.minutes, 10) * 60;
+    setTimerDuration(totalSeconds);
+    console.log("Timer", timerDuration);
+  }, [formData]);
 
   return (
     <View style={styles.container}>
-      <Navbar/>
+      <Navbar />
       <View style={styles.timer}>
-        {/* <FlatList> */}
-            <Text style={styles.timerText}>Timer</Text>
-            <Text style={styles.timerText}>00:00:00</Text>
-            {/* </FlatList> */}
+        <View style={styles.timerContent}>
+          <TextInput
+            label="Number of Hours"
+            value={formData.hours}
+            onChangeText={(text) =>
+              setFormData((prevData) => ({ ...prevData, hours: text }))
+            }
+            style={styles.input}
+          />
+          <TextInput
+            label="Number of Minutes"
+            value={formData.minutes}
+            onChangeText={(text) =>
+              setFormData((prevData) => ({ ...prevData, minutes: text }))
+            }
+            style={styles.input}
+          />
+          <Button onPress={totalDuration}>Display Timer</Button>
+        </View>
+        <View style={styles.sectionStyle}>
+          <Timer
+            totalDuration={timerDuration * seconds}
+            //Time Duration
+            start={isTimerStart}
+            //To start
+            reset={resetTimer}
+            //To reset
+            options={options}
+            //options for the styling
+            handleFinish={() => {
+              alert("Timer Completed!!");
+            }}
+            //can call a function On finish of the time
+            // getTime={(time) => {
+            //   console.log(time);
+            // }}
+          />
+          <View style={styles.timerButtons}>
+            <TouchableHighlight
+              onPress={() => {
+                if (timerDuration === 0) {
+                  // Alert the user when the timer duration is 0
+                  alert("Please set a non-zero timer duration before starting.");
+                } else {
+                  setIsTimerStart(!isTimerStart);
+                  setResetTimer(false);
+                }
+              }}
+            >
+              <Text style={styles.timeButtonsText}>
+                {!isTimerStart ? "START" : "STOP"}
+              </Text>
+            </TouchableHighlight>
+            <TouchableHighlight
+              onPress={() => {
+                setIsTimerStart(false);
+                setResetTimer(true);
+                setFormData({
+                  hours: 0,
+                  minutes: 0,
+                })
+
+              }}
+            >
+              <Text style={styles.timeButtonsText}>RESET</Text>
+            </TouchableHighlight>
+          </View>
+        </View>
       </View>
       <TouchableOpacity
         onPress={() => navigation.navigate("Home")}
@@ -29,14 +126,19 @@ const Timer = () => {
   );
 };
 
-export default Timer;
-
+export default TimerPro;
 
 const styles = StyleSheet.create({
   container: {
+    display: "flex",
     paddingTop: 20, // Adjusted paddingTop
     paddingHorizontal: 20,
+    justifyContent: "space-between",
     height: "100%",
+  },
+  finishImg: {
+    width: 10,
+    height: 10,
   },
   button: {
     width: "100%",
@@ -44,15 +146,58 @@ const styles = StyleSheet.create({
     padding: 16,
     borderRadius: 16,
     alignItems: "center",
-    marginTop: 650,
+    marginBottom: 30,
   },
   buttonText: {
     fontSize: 24,
     fontWeight: "600",
     color: "white",
   },
+  timer: {
+    paddingHorizontal: 16,
+    marginBottom: 150,
+  },
+  timerButtons: {
+    display: "flex",
+    justifyContent: "space-between",
+    marginTop: 40,
+    gap: 20,
+  },
   precautions: {
     marginTop: 50,
     paddingHorizontal: 16,
   },
+  sectionStyle: {
+    marginTop: 92,
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  timerContent: {
+    display: "flex",
+    flexDirection: "column",
+    gap: 20,
+    paddingHorizontal: 16,
+  },
+  timeButtonsText: {
+    fontSize: 20,
+    backgroundColor: "black",
+    padding: 10,
+    fontWeight: "600",
+    color: "white",
+  },
 });
+
+const options = {
+  container: {
+    backgroundColor: "#FF0000",
+    padding: 5,
+    borderRadius: 5,
+    width: 200,
+    alignItems: "center",
+  },
+  text: {
+    fontSize: 25,
+    color: "#FFF",
+    marginLeft: 7,
+  },
+};
