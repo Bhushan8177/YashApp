@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from "react";
-import Common from "../components/common";
 import {
-  Image,
   StyleSheet,
   Text,
   TouchableOpacity,
@@ -12,6 +10,7 @@ import { useNavigation } from "@react-navigation/native";
 import Navbar from "../components/navbar";
 import { Timer } from "react-native-stopwatch-timer";
 import { Button, TextInput } from "react-native-paper";
+import BackgroundImage from "../components/background";
 
 const TimerPro = () => {
   const navigation = useNavigation();
@@ -44,85 +43,84 @@ const TimerPro = () => {
   }, [formData]);
 
   return (
-    <View style={styles.container}>
-      <Navbar />
-      <View style={styles.timer}>
-        <View style={styles.timerContent}>
-          <TextInput
-            label="Number of Hours"
-            value={formData.hours}
-            onChangeText={(text) =>
-              setFormData((prevData) => ({ ...prevData, hours: text }))
-            }
-            style={styles.input}
-          />
-          <TextInput
-            label="Number of Minutes"
-            value={formData.minutes}
-            onChangeText={(text) =>
-              setFormData((prevData) => ({ ...prevData, minutes: text }))
-            }
-            style={styles.input}
-          />
-          <Button onPress={totalDuration}>Display Timer</Button>
-        </View>
-        <View style={styles.sectionStyle}>
-          <Timer
-            totalDuration={timerDuration * seconds}
-            //Time Duration
-            start={isTimerStart}
-            //To start
-            reset={resetTimer}
-            //To reset
-            options={options}
-            //options for the styling
-            handleFinish={() => {
-              alert("Timer Completed!!");
-            }}
-            //can call a function On finish of the time
-            // getTime={(time) => {
-            //   console.log(time);
-            // }}
-          />
-          <View style={styles.timerButtons}>
-            <TouchableHighlight
-              onPress={() => {
-                if (timerDuration === 0) {
-                  // Alert the user when the timer duration is 0
-                  alert("Please set a non-zero timer duration before starting.");
-                } else {
-                  setIsTimerStart(!isTimerStart);
-                  setResetTimer(false);
-                }
+    <BackgroundImage>
+      <View style={styles.container}>
+        <Navbar />
+        <View style={styles.timer}>
+          <View style={styles.timerContent}>
+            <TextInput
+              label="Number of Hours (तासांची संख्या)"
+              value={formData.hours}
+              onChangeText={(text) =>
+                setFormData((prevData) => ({ ...prevData, hours: text }))
+              }
+              style={styles.input}
+            />
+            <TextInput
+              label="Number of Minutes (मिनिटांची संख्या)"
+              value={formData.minutes}
+              onChangeText={(text) =>
+                setFormData((prevData) => ({ ...prevData, minutes: text }))
+              }
+              style={styles.input}
+            />
+            <Button onPress={totalDuration}>Display Timer</Button>
+          </View>
+          <View style={styles.sectionStyle}>
+            <Timer
+              totalDuration={timerDuration * seconds}
+              //Time Duration
+              start={isTimerStart}
+              //To start
+              reset={resetTimer}
+              //To reset
+              options={options}
+              //options for the styling
+              handleFinish={() => {
+                alert("Timer Completed!!");
               }}
-            >
-              <Text style={styles.timeButtonsText}>
-                {!isTimerStart ? "START" : "STOP"}
-              </Text>
-            </TouchableHighlight>
-            <TouchableHighlight
-              onPress={() => {
-                setIsTimerStart(false);
-                setResetTimer(true);
-                setFormData({
-                  hours: 0,
-                  minutes: 0,
-                })
-
-              }}
-            >
-              <Text style={styles.timeButtonsText}>RESET</Text>
-            </TouchableHighlight>
+            />
+            <View style={styles.timerButtons}>
+              <TouchableHighlight
+                onPress={() => {
+                  if (timerDuration === 0) {
+                    // Alert the user when the timer duration is 0
+                    alert(
+                      "Please set a non-zero timer duration before starting."
+                    );
+                  } else {
+                    setIsTimerStart(!isTimerStart);
+                    setResetTimer(false);
+                  }
+                }}
+              >
+                <Text style={styles.timeButtonsText}>
+                  {!isTimerStart ? "START" : "STOP"}
+                </Text>
+              </TouchableHighlight>
+              <TouchableHighlight
+                onPress={() => {
+                  setIsTimerStart(false);
+                  setResetTimer(true);
+                  setFormData({
+                    hours: 0,
+                    minutes: 0,
+                  });
+                }}
+              >
+                <Text style={styles.timeButtonsText}>RESET</Text>
+              </TouchableHighlight>
+            </View>
           </View>
         </View>
+        <TouchableOpacity
+          onPress={() => navigation.navigate("Home")}
+          style={styles.button}
+        >
+          <Text style={styles.buttonText}>Go Back To Home</Text>
+        </TouchableOpacity>
       </View>
-      <TouchableOpacity
-        onPress={() => navigation.navigate("Home")}
-        style={styles.button}
-      >
-        <Text style={styles.buttonText}>Go Back To Home</Text>
-      </TouchableOpacity>
-    </View>
+    </BackgroundImage>
   );
 };
 
@@ -142,7 +140,7 @@ const styles = StyleSheet.create({
   },
   button: {
     width: "100%",
-    backgroundColor: "#1A759F",
+    backgroundColor: "#6A793E",
     padding: 16,
     borderRadius: 16,
     alignItems: "center",
@@ -172,6 +170,12 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
   },
+  input: {
+    marginBottom: 10,
+    // backgroundColor: "transparent", // Added background color
+    fontWeight: "bold",
+    fontSize: 12,
+  },
   timerContent: {
     display: "flex",
     flexDirection: "column",
@@ -180,7 +184,7 @@ const styles = StyleSheet.create({
   },
   timeButtonsText: {
     fontSize: 20,
-    backgroundColor: "black",
+    backgroundColor: "rgb(0,0,0)",
     padding: 10,
     fontWeight: "600",
     color: "white",

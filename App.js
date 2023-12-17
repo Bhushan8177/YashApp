@@ -1,6 +1,5 @@
-import { StatusBar } from "expo-status-bar";
 import { NavigationContainer } from "@react-navigation/native";
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, ImageBackground, Text, View } from "react-native";
 import MyStack from "./navigation";
 
 export default function App() {
@@ -15,5 +14,9 @@ const styles = StyleSheet.create({
   container: {
     paddingTop: 40,
     paddingHorizontal: 16,
+  },
+  image: {
+    flex: 1,
+    justifyContent: "center",
   },
 });

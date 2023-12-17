@@ -28,7 +28,7 @@ export default navbar;
 const styles = StyleSheet.create({
   logoContainer: {
     flexDirection: "row",
-    gap: 12,
+    gap: 40,
     justifyContent: "space-between",
     alignItems: "center",
     paddingTop: 40, // Adjusted paddingTop
@@ -48,6 +48,12 @@ const styles = StyleSheet.create({
     padding: 16,
     borderRadius: 16,
     marginTop: 10,
-    backgroundColor: "#1A759F",
+    backgroundColor: "#6A793E",
+
+  },
+  backButtonText: {
+    color: "white",
+    fontWeight: "bold",
+    fontSize: 16,
   },
 });

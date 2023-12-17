@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { useNavigation } from "@react-navigation/native";
 import { TextInput, Button } from "react-native-paper";
 import Navbar from "../components/navbar";
-
+import BackgroundImage from "../components/background";
 
 const DataForm = () => {
   const [formData, setFormData] = useState({
@@ -24,7 +24,7 @@ const DataForm = () => {
   };
 
   return (
-    <>
+    <BackgroundImage>
       <View style={styles.container}>
         <Navbar />
 
@@ -40,10 +40,13 @@ const DataForm = () => {
           />
 
           <TextInput
-            label="bambooSpecies (बांबूची प्रजात)"
+            label="BambooSpecies (बांबूची प्रजात)"
             value={formData.bambooSpecies}
             onChangeText={(text) =>
-              setFormData((prevData) => ({ ...prevData, bambooSpecies: text }))
+              setFormData((prevData) => ({
+                ...prevData,
+                bambooSpecies: text,
+              }))
             }
             style={styles.input}
           />
@@ -51,7 +54,10 @@ const DataForm = () => {
             label="Chemical Weight (घन वजन) (in litres) "
             value={formData.chemicalWeight}
             onChangeText={(text) =>
-              setFormData((prevData) => ({ ...prevData, chemicalWeight: text }))
+              setFormData((prevData) => ({
+                ...prevData,
+                chemicalWeight: text,
+              }))
             }
             style={styles.input}
           />
@@ -76,7 +82,7 @@ const DataForm = () => {
           </TouchableOpacity>
         </View>
       </View>
-    </>
+    </BackgroundImage>
   );
 };
 
@@ -91,13 +97,12 @@ const styles = StyleSheet.create({
   formContainer: {
     paddingHorizontal: 16,
     marginTop: 100, // Adjusted marginTop for better visibility
+    gap: 20,
   },
   input: {
     marginBottom: 10,
-    backgroundColor: "transparent", // Added background color
-  },
-  button: {
-    marginTop: 20, // Added marginTop for better spacing
+    // backgroundColor: "transparent", // Added background color
+    fontWeight: "bold",
   },
   logoContainer: {
     flexDirection: "row",
@@ -110,19 +115,13 @@ const styles = StyleSheet.create({
     width: 60,
     height: 60,
   },
-  backButton: {
-    padding: 16,
-    borderRadius: 16,
-    marginTop: 10,
-    backgroundColor: "#1A759F",
-  },
   button: {
     width: "100%",
-    backgroundColor: "#1A759F",
+    backgroundColor: "#6A793E",
     padding: 16,
     borderRadius: 16,
     alignItems: "center",
-    marginTop: 300,
+    marginTop: 220,
   },
   buttonText: {
     fontSize: 24,

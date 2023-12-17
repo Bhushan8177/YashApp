@@ -4,18 +4,20 @@ import React from "react";
 // import Title from "../components/title";
 import Common from "../components/common";
 import logo from "../assets/logo.png";
+import BackgroundImage from "../components/background";
 
 const Home = () => {
   // const navigation = useNavigation();
   const banner = "https://media.giphy.com/media/RR32PdmXEwkuzZFKSa/giphy.gif"
     return (
-    <Common
-      titleText="Bamboo Pre-treatment"
-      route="DataForm"
-      banner={banner}
-      buttonText="Start"
-      logo={logo}
-    />
+      <BackgroundImage>
+        <Common
+          titleText="Bamboo Pre-treatment"
+          route="DataForm"
+          buttonText="Start"
+          logo={logo}
+        />
+      </BackgroundImage>
   );
 };
 

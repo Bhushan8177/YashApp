@@ -32,10 +32,12 @@ const styles = StyleSheet.create({
   },
   title1: {
     fontSize: 32,
-    fontWeight: "600",
+    fontWeight: "700",
+    color: '#3C2D1E',
   },
   title2: {
     fontSize: 32,
-    fontWeight: "600",
+    fontWeight: "700",
+    color : '#3C2D1E',
   },
 });
