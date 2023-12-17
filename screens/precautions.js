@@ -2,11 +2,9 @@ import React from "react";
 import Common from "../components/common";
 import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import { useNavigation } from "@react-navigation/native";
-import Title from "../components/title";
-import finish from "../assets/finish.png";
 import Navbar from "../components/navbar";
-import { FlatList } from "react-native-gesture-handler";
 import BackgroundImage from "../components/background";
+
 
 const Precautions = () => {
   const navigation = useNavigation();

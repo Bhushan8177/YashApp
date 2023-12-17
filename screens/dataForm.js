@@ -4,6 +4,7 @@ import { useNavigation } from "@react-navigation/native";
 import { TextInput, Button } from "react-native-paper";
 import Navbar from "../components/navbar";
 import BackgroundImage from "../components/background";
+import { Notifier, Easing } from "react-native-notifier";
 
 const DataForm = () => {
   const [formData, setFormData] = useState({

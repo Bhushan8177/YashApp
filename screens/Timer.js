@@ -11,6 +11,7 @@ import Navbar from "../components/navbar";
 import { Timer } from "react-native-stopwatch-timer";
 import { Button, TextInput } from "react-native-paper";
 import BackgroundImage from "../components/background";
+import { Notifier, Easing } from "react-native-notifier";
 
 const TimerPro = () => {
   const navigation = useNavigation();
@@ -26,21 +27,38 @@ const TimerPro = () => {
   );
 
   const totalDuration = () => {
-    // const hours = parseInt(formData.hours);
-    // const minutes = parseInt(formData.minutes);
-    // setTimerDuration(hours * 60 * 60 + minutes * 60);
-    // console.log("Timer", timerDuration);
-    setIsTimerStart(false);
-    setResetTimer(true);
+    const hours = parseInt(formData.hours);
+    const minutes = parseInt(formData.minutes);
+    setTimerDuration(hours * 60 * 60 + minutes * 60);
+    console.log("Timer", timerDuration);
+    if (!isTimerStart) {
+      setIsTimerStart(false);
+      setResetTimer(true);
+      if (
+        timerDuration === NaN ||
+        timerDuration === undefined ||
+        timerDuration === null
+      ) {
+        setTimerDuration(0);
+      }
+    }
   };
 
-  useEffect(() => {
-    // Calculate total duration in seconds when formData.hours or formData.minutes change
-    const totalSeconds =
-      parseInt(formData.hours) * 60 * 60 + parseInt(formData.minutes, 10) * 60;
-    setTimerDuration(totalSeconds);
-    console.log("Timer", timerDuration);
-  }, [formData]);
+  // useEffect(() => {
+  //   // Calculate total duration in seconds when formData.hours or formData.minutes change
+  //   const totalSeconds =
+  //     parseInt(formData.hours) * 60 * 60 + parseInt(formData.minutes, 10) * 60;
+  //   if (
+  //     timerDuration === NaN ||
+  //     timerDuration === undefined ||
+  //     timerDuration === null
+  //   ) {
+  //     setTimerDuration(0);
+  //   }
+  //   setTimerDuration(totalSeconds);
+  //   console.log("Timer", timerDuration);
+  // }, [formData]);
+
 
   return (
     <BackgroundImage>
@@ -77,7 +95,16 @@ const TimerPro = () => {
               options={options}
               //options for the styling
               handleFinish={() => {
-                alert("Timer Completed!!");
+                Notifier.showNotification({
+                  title: "Task Completed!",
+                  description: "Completed the task successfully.",
+                  duration: 0,
+                  showAnimationDuration: 800,
+                  showEasing: Easing.bounce,
+                  onHidden: () => console.log("Hidden"),
+                  onPress: () => console.log("Press"),
+                  hideOnPress: true,
+                });
               }}
             />
             <View style={styles.timerButtons}>
