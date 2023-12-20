@@ -85,26 +85,29 @@ export default Precautions;
 
 const styles = StyleSheet.create({
   container: {
-    paddingTop: 20, // Adjusted paddingTop
+  flex : 1,
+//  gap : 10,
+//    paddingTop: 20, // Adjusted paddingTop
     paddingHorizontal: 20,
     height: "100%",
   },
   container1 : {
-    // flex: 1,
+     flex: 0.5,
     paddingHorizontal : 15,
-    paddingBottom : 20,
+//    paddingBottom : 20,
     // justifyContent: "center",
     alignItems: "center",
     borderWidth: 3,
     borderColor: "#3B821D",
-    marginTop: 20,
+//    marginTop: 20,
     backgroundColor: "#E8F6E8",
     borderRadius: 16,
+ paddingVertical : 10,
   },
   container2 : {
-    // flex: 1,
+     flex: 1,
     paddingHorizontal : 15,
-    paddingBottom : 40,
+//    paddingBottom : 40,
     justifyContent: "center",
     alignItems: "center",
     borderWidth: 3,
@@ -112,6 +115,7 @@ const styles = StyleSheet.create({
     marginTop: 20,
     backgroundColor: "#E8F6E8",
     borderRadius: 16,
+     paddingVertical : 20,
   },
   button: {
     width: "100%",
@@ -120,6 +124,7 @@ const styles = StyleSheet.create({
     borderRadius: 16,
     alignItems: "center",
     marginTop: 25,
+    marginBottom : 30,
   },
   buttonText: {
     fontSize: 24,
@@ -127,17 +132,17 @@ const styles = StyleSheet.create({
     color: "white",
   },
   precautionTextContainter: {
-    marginTop: 20,
+//    marginTop: 15,
     // paddingHorizontal: 10,
   },
   precautionHeading: {
     fontSize: 24,
     fontWeight: "600",
     alignSelf: "flex-start",
-    marginTop: 20,
+//    marginTop: 15,
   },
   precautionText: {
-    fontSize: 18,
+    fontSize: 16,
     alignSelf: "flex-start",
     fontWeight: "500",
   },

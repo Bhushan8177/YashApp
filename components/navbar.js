@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import Title from "../components/title";
 import { useNavigation } from "@react-navigation/native";
 
-import logo from "../assets/logo.png";
+
 
 const navbar = () => {
   const navigation = useNavigation();

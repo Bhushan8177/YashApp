@@ -90,7 +90,8 @@ export default DataForm;
 
 const styles = StyleSheet.create({
   container: {
-    paddingTop: 20, // Adjusted paddingTop
+  flex : 1,
+//    paddingTop: 20, // Adjusted paddingTop
     paddingHorizontal: 20,
     height: "100%",
   },
@@ -109,7 +110,7 @@ const styles = StyleSheet.create({
     gap: 16,
     justifyContent: "center",
     alignItems: "center",
-    paddingTop: 40, // Adjusted paddingTop
+    paddingTop: 20, // Adjusted paddingTop
   },
   logo: {
     width: 60,
@@ -121,7 +122,8 @@ const styles = StyleSheet.create({
     padding: 16,
     borderRadius: 16,
     alignItems: "center",
-    marginTop: 220,
+    marginTop: 80,
+//marginBottom : 30,
   },
   buttonText: {
     fontSize: 24,
