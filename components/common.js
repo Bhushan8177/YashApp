@@ -1,8 +1,7 @@
-import { Image, StyleSheet, ImageBackground,Text, TouchableOpacity, View } from "react-native";
-import React from "react";
 import { useNavigation } from "@react-navigation/native";
+import React from "react";
+import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import Title from "../components/title";
-import bg from "../assets/bg.jpg";
 
 const Common = ({ titleText, route, subTitle, banner, buttonText, logo }) => {
   const navigation = useNavigation();
@@ -13,29 +12,31 @@ const Common = ({ titleText, route, subTitle, banner, buttonText, logo }) => {
 
   return (
     <View style={styles.container}>
-        <View style={styles.logoContainer}>
-          {titleText !== "Bamboo Pre-treatment" && (
-            <TouchableOpacity onPress={handleBack} style={styles.backButton}>
-              <Text style={styles.backButtonText}>Back</Text>
-            </TouchableOpacity>
-          )}
-          <Image source={logo} style={styles.logo} resizeMode="contain" />
-          <Title />
-        </View>
-        {subTitle && <Text style={styles.subTitle}>{subTitle}</Text>}
-        <View style={styles.bannerContainer}>
-          <Image
-            source={{ uri: banner }}
-            style={styles.banner}
-            resizeMode="contain"
-          />
-        </View>
+      <View style={styles.logoContainer}>
+        {titleText !== "Bamboo Pre-treatment" && (
+          <TouchableOpacity onPress={handleBack} style={styles.backButton}>
+            <Text style={styles.backButtonText}>Back</Text>
+          </TouchableOpacity>
+        )}
+        <Image source={logo} style={styles.logo} resizeMode="contain" />
+        <Title />
+      </View>
+      {subTitle && <Text style={styles.subTitle}>{subTitle}</Text>}
+      <View style={styles.bannerContainer}>
+        <Image
+          source={{ uri: banner }}
+          style={styles.banner}
+          resizeMode="contain"
+        />
+      </View>
+      <View style={styles.buttonContainer}>
         <TouchableOpacity
           onPress={() => navigation.navigate(route)}
           style={styles.button}
         >
           <Text style={styles.buttonText}>{buttonText}</Text>
         </TouchableOpacity>
+      </View>
     </View>
   );
 };
@@ -56,14 +57,12 @@ const styles = StyleSheet.create({
     opacity: 0.9,
   },
   bannerContainer: {
-    justifyContent: "center",
-    alignItems: "center",
     flex: 1,
   },
   container: {
-    paddingTop: 20, // Adjusted paddingTop
-    paddingHorizontal: 20,
+    padding: 9,
     height: "100%",
+    width: "100%",
   },
   title: {
     fontSize: 18,
@@ -75,14 +74,19 @@ const styles = StyleSheet.create({
     fontWeight: "600",
     alignSelf: "center",
   },
-  button: {
+  buttonContainer: {
     width: "100%",
     backgroundColor: "#6A793E",
-    // backgroundColor: "#1A759F",
+    borderRadius: 16,
+    marginBottom: 30,
+    justifyContent: "center",
+  },
+  button: {
+    minWidth: "90%",
+    backgroundColor: "#6A793E",
     padding: 16,
     borderRadius: 16,
     alignItems: "center",
-    marginBottom: 30,
   },
   buttonText: {
     fontSize: 24,
@@ -94,7 +98,7 @@ const styles = StyleSheet.create({
     gap: 16,
     justifyContent: "center",
     alignItems: "center",
-    paddingTop: 40, // Adjusted paddingTop
+    paddingTop: 40,
   },
   logo: {
     width: 80,

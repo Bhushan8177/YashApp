@@ -1,9 +1,7 @@
-import { Image, StyleSheet, View, TouchableOpacity, Text } from "react-native";
-import React, { useState } from "react";
-import Title from "../components/title";
 import { useNavigation } from "@react-navigation/native";
-
-
+import React from "react";
+import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import Title from "../components/title";
 
 const navbar = () => {
   const navigation = useNavigation();
@@ -27,13 +25,14 @@ export default navbar;
 
 const styles = StyleSheet.create({
   logoContainer: {
+    flex: 1,
+    padding: 9,
     flexDirection: "row",
     gap: 40,
     justifyContent: "space-between",
     alignItems: "center",
-    paddingTop: 40, // Adjusted paddingTop
   },
-  titleContainer : {
+  titleContainer: {
     display: "flex",
     flexDirection: "row",
     alignItems: "center",
@@ -47,9 +46,7 @@ const styles = StyleSheet.create({
   backButton: {
     padding: 16,
     borderRadius: 16,
-    marginTop: 10,
     backgroundColor: "#6A793E",
-
   },
   backButtonText: {
     color: "white",
