@@ -156,7 +156,7 @@ export default TimerPro;
 const styles = StyleSheet.create({
   container: {
     display: "flex",
-    paddingTop: 20, // Adjusted paddingTop
+//    paddingTop: 20, // Adjusted paddingTop
     paddingHorizontal: 20,
     justifyContent: "space-between",
     height: "100%",
@@ -180,7 +180,7 @@ const styles = StyleSheet.create({
   },
   timer: {
     paddingHorizontal: 16,
-    marginBottom: 150,
+//    marginBottom: 150,
   },
   timerButtons: {
     display: "flex",
@@ -188,12 +188,8 @@ const styles = StyleSheet.create({
     marginTop: 40,
     gap: 20,
   },
-  precautions: {
-    marginTop: 50,
-    paddingHorizontal: 16,
-  },
   sectionStyle: {
-    marginTop: 92,
+//    marginTop: 92,
     alignItems: "center",
     justifyContent: "center",
   },
