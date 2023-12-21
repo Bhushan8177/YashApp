@@ -84,7 +84,7 @@ const TimerPro = () => {
                   }
                   style={styles.input}
                 />
-                <Button onPress={totalDuration}>Display Timer</Button>
+                <Button onPress={totalDuration}>Click Display Timer</Button>
               </View>
               <View style={styles.sectionStyle}>
                 <Timer

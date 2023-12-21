@@ -44,6 +44,11 @@ const Common = ({ titleText, route, subTitle, banner, buttonText, logo }) => {
 export default Common;
 
 const styles = StyleSheet.create({
+  root: {
+    flex: 1,
+    height: "100%",
+    width: "100%",
+  },
   banner: {
     height: 400,
     width: 400,
