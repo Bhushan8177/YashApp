@@ -25,70 +25,75 @@ const DataForm = () => {
   };
 
   return (
-    <View style={styles.root}>
-      <ScrollView style={styles.scroll} contentContainerStyle={{ flexGrow: 1 }}>
-        <BackgroundImage>
-          <Navbar />
+    <>
+      <View style={styles.root}>
+        <ScrollView
+          style={styles.scroll}
+          contentContainerStyle={{ flexGrow: 1 }}
+        >
+          <BackgroundImage>
+            <Navbar />
 
-          {/* Form Section */}
-          <View style={styles.formContainer}>
-            <TextInput
-              label="Username (नाव)"
-              value={formData.username}
-              onChangeText={(text) =>
-                setFormData((prevData) => ({ ...prevData, username: text }))
-              }
-              style={styles.input}
-            />
-
-            <TextInput
-              label="BambooSpecies (बांबूची प्रजात)"
-              value={formData.bambooSpecies}
-              onChangeText={(text) =>
-                setFormData((prevData) => ({
-                  ...prevData,
-                  bambooSpecies: text,
-                }))
-              }
-              style={styles.input}
-            />
-            <TextInput
-              label="Chemical Weight (घन वजन) (in litres) "
-              value={formData.chemicalWeight}
-              onChangeText={(text) =>
-                setFormData((prevData) => ({
-                  ...prevData,
-                  chemicalWeight: text,
-                }))
-              }
-              style={styles.input}
-            />
-            <TextInput
-              label="Bamboo Weight (बांबूची वजन) (in kgs) "
-              value={formData.bambooWeight}
-              onChangeText={(text) =>
-                setFormData((prevData) => ({
-                  ...prevData,
-                  bambooWeight: text,
-                }))
-              }
-              style={styles.input}
-            />
-            <TouchableOpacity
-              onPress={() => {
-                navigation.navigate("Precautions");
-                {
-                  handleFormSubmit();
+            {/* Form Section */}
+            <View style={styles.formContainer}>
+              <TextInput
+                label="Username (नाव)"
+                value={formData.username}
+                onChangeText={(text) =>
+                  setFormData((prevData) => ({ ...prevData, username: text }))
                 }
-              }}
-              style={styles.button}
-            >
-              <Text style={styles.buttonText}>{"Next"}</Text>
-            </TouchableOpacity>
-          </View>
-        </BackgroundImage>
-      </ScrollView>
-    </View>
+                style={styles.input}
+              />
+
+              <TextInput
+                label="BambooSpecies (बांबूची प्रजात)"
+                value={formData.bambooSpecies}
+                onChangeText={(text) =>
+                  setFormData((prevData) => ({
+                    ...prevData,
+                    bambooSpecies: text,
+                  }))
+                }
+                style={styles.input}
+              />
+              <TextInput
+                label="Chemical Weight (घन वजन) (in litres) "
+                value={formData.chemicalWeight}
+                onChangeText={(text) =>
+                  setFormData((prevData) => ({
+                    ...prevData,
+                    chemicalWeight: text,
+                  }))
+                }
+                style={styles.input}
+              />
+              <TextInput
+                label="Bamboo Weight (बांबूची वजन) (in kgs) "
+                value={formData.bambooWeight}
+                onChangeText={(text) =>
+                  setFormData((prevData) => ({
+                    ...prevData,
+                    bambooWeight: text,
+                  }))
+                }
+                style={styles.input}
+              />
+              <TouchableOpacity
+                onPress={() => {
+                  navigation.navigate("Precautions");
+                  {
+                    handleFormSubmit();
+                  }
+                }}
+                style={styles.button}
+              >
+                <Text style={styles.buttonText}>{"Next"}</Text>
+              </TouchableOpacity>
+            </View>
+          </BackgroundImage>
+        </ScrollView>
+      </View>
+    </>
   );
 };
 

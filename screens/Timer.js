@@ -61,99 +61,104 @@ const TimerPro = () => {
   // }, [formData]);
 
   return (
-    <View style={styles.root}>
-      <ScrollView contentContainerStyle={{ flex: 1 }}>
-        <BackgroundImage>
-          <View style={styles.container}>
-            <Navbar />
-            <View style={styles.timer}>
-              <View style={styles.timerContent}>
-                <TextInput
-                  label="Number of Hours (तासांची संख्या)"
-                  value={formData.hours}
-                  onChangeText={(text) =>
-                    setFormData((prevData) => ({ ...prevData, hours: text }))
-                  }
-                  style={styles.input}
-                />
-                <TextInput
-                  label="Number of Minutes (मिनिटांची संख्या)"
-                  value={formData.minutes}
-                  onChangeText={(text) =>
-                    setFormData((prevData) => ({ ...prevData, minutes: text }))
-                  }
-                  style={styles.input}
-                />
-                <Button onPress={totalDuration}>Display Timer</Button>
-              </View>
-              <View style={styles.sectionStyle}>
-                <Timer
-                  totalDuration={timerDuration * seconds}
-                  //Time Duration
-                  start={isTimerStart}
-                  //To start
-                  reset={resetTimer}
-                  //To reset
-                  options={options}
-                  //options for the styling
-                  handleFinish={() => {
-                    Notifier.showNotification({
-                      title: "Task Completed!",
-                      description: "Completed the task successfully.",
-                      duration: 0,
-                      showAnimationDuration: 800,
-                      showEasing: Easing.bounce,
-                      onHidden: () => console.log("Hidden"),
-                      onPress: () => console.log("Press"),
-                      hideOnPress: true,
-                    });
-                  }}
-                />
-                <View style={styles.timerButtons}>
-                  <TouchableHighlight
-                    onPress={() => {
-                      if (timerDuration === 0) {
-                        // Alert the user when the timer duration is 0
-                        alert(
-                          "Please set a non-zero timer duration before starting."
-                        );
-                      } else {
-                        setIsTimerStart(!isTimerStart);
-                        setResetTimer(false);
-                      }
-                    }}
-                  >
-                    <Text style={styles.timeButtonsText}>
-                      {!isTimerStart ? "START" : "STOP"}
-                    </Text>
-                  </TouchableHighlight>
-                  <TouchableHighlight
-                    onPress={() => {
-                      setIsTimerStart(false);
-                      setResetTimer(true);
-                      setFormData({
-                        hours: 0,
-                        minutes: 0,
+    <>
+      <View style={styles.root}>
+        <ScrollView contentContainerStyle={{ flex: 1 }}>
+          <BackgroundImage>
+            <View style={styles.container}>
+              <Navbar />
+              <View style={styles.timer}>
+                <View style={styles.timerContent}>
+                  <TextInput
+                    label="Number of Hours (तासांची संख्या)"
+                    value={formData.hours}
+                    onChangeText={(text) =>
+                      setFormData((prevData) => ({ ...prevData, hours: text }))
+                    }
+                    style={styles.input}
+                  />
+                  <TextInput
+                    label="Number of Minutes (मिनिटांची संख्या)"
+                    value={formData.minutes}
+                    onChangeText={(text) =>
+                      setFormData((prevData) => ({
+                        ...prevData,
+                        minutes: text,
+                      }))
+                    }
+                    style={styles.input}
+                  />
+                  <Button onPress={totalDuration}>Display Timer</Button>
+                </View>
+                <View style={styles.sectionStyle}>
+                  <Timer
+                    totalDuration={timerDuration * seconds}
+                    //Time Duration
+                    start={isTimerStart}
+                    //To start
+                    reset={resetTimer}
+                    //To reset
+                    options={options}
+                    //options for the styling
+                    handleFinish={() => {
+                      Notifier.showNotification({
+                        title: "Task Completed!",
+                        description: "Completed the task successfully.",
+                        duration: 0,
+                        showAnimationDuration: 800,
+                        showEasing: Easing.bounce,
+                        onHidden: () => console.log("Hidden"),
+                        onPress: () => console.log("Press"),
+                        hideOnPress: true,
                       });
                     }}
-                  >
-                    <Text style={styles.timeButtonsText}>RESET</Text>
-                  </TouchableHighlight>
+                  />
+                  <View style={styles.timerButtons}>
+                    <TouchableHighlight
+                      onPress={() => {
+                        if (timerDuration === 0) {
+                          // Alert the user when the timer duration is 0
+                          alert(
+                            "Please set a non-zero timer duration before starting."
+                          );
+                        } else {
+                          setIsTimerStart(!isTimerStart);
+                          setResetTimer(false);
+                        }
+                      }}
+                    >
+                      <Text style={styles.timeButtonsText}>
+                        {!isTimerStart ? "START" : "STOP"}
+                      </Text>
+                    </TouchableHighlight>
+                    <TouchableHighlight
+                      onPress={() => {
+                        setIsTimerStart(false);
+                        setResetTimer(true);
+                        setFormData({
+                          hours: 0,
+                          minutes: 0,
+                        });
+                      }}
+                    >
+                      <Text style={styles.timeButtonsText}>RESET</Text>
+                    </TouchableHighlight>
+                  </View>
                 </View>
               </View>
+              <View style={styles.buttonContainer}>
+                <TouchableOpacity
+                  onPress={() => navigation.navigate("Home")}
+                  style={styles.button}
+                >
+                  <Text style={styles.buttonText}>Go Back To Home</Text>
+                </TouchableOpacity>
+              </View>
             </View>
-            <View style={styles.buttonContainer}>
-              <TouchableOpacity
-                onPress={() => navigation.navigate("Home")}
-                style={styles.button}
-              >
-                <Text style={styles.buttonText}>Go Back To Home</Text>
-              </TouchableOpacity>
-            </View>
-          </View>
-        </BackgroundImage>
-      </ScrollView>
-    </View>
+          </BackgroundImage>
+        </ScrollView>
+      </View>
+    </>
   );
 };
 
@@ -163,6 +168,7 @@ const styles = StyleSheet.create({
   root: {
     flex: 1,
     height: "100%",
+    width: "100%",
   },
   container: {
     display: "flex",

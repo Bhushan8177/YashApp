@@ -2,7 +2,7 @@
 import React from "react";
 // import { useNavigation } from "@react-navigation/native";
 // import Title from "../components/title";
-import { SafeAreaView, StyleSheet } from "react-native";
+import { StyleSheet, View } from "react-native";
 import logo from "../assets/logo.png";
 import BackgroundImage from "../components/background";
 import Common from "../components/common";
@@ -12,7 +12,7 @@ const Home = () => {
   const banner = "https://media.giphy.com/media/RR32PdmXEwkuzZFKSa/giphy.gif";
   return (
     <>
-      <SafeAreaView style={styles.root}>
+      <View style={styles.root}>
         <BackgroundImage>
           <Common
             titleText="Bamboo Pre-treatment"
@@ -21,7 +21,7 @@ const Home = () => {
             logo={logo}
           />
         </BackgroundImage>
-      </SafeAreaView>
+      </View>
     </>
   );
 };
