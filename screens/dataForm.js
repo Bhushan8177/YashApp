@@ -119,10 +119,10 @@ const styles = StyleSheet.create({
   },
   logoContainer: {
     flexDirection: "row",
-    gap: 16,
+//    gap: 16,
     justifyContent: "center",
     alignItems: "center",
-    paddingTop: 20, // Adjusted paddingTop
+//    paddingTop: 20, // Adjusted paddingTop
   },
   logo: {
     width: 60,
