@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "917517700796",
+    "project_id": "bamboo-9c17c",
+    "storage_bucket": "bamboo-9c17c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:917517700796:android:a2f6473e0a61b3865c8ab9",
+        "android_client_info": {
+          "package_name": "com.bhushan_kale.quizllerapp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDDi82JSJMgsMr9WIyAUHVafMnp_CtCDA8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
