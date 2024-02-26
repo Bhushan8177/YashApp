@@ -12,7 +12,6 @@ import {
   View,
 } from "react-native";
 import { ScrollView } from "react-native-gesture-handler";
-import { Easing, Notifier } from "react-native-notifier";
 import { Button, TextInput } from "react-native-paper";
 import { Timer } from "react-native-stopwatch-timer";
 import BackgroundImage from "../components/background";
@@ -238,7 +237,7 @@ const TimerPro = () => {
                       const message = {
                         to: expoPushToken,
                         sound: "default",
-                        title: "10 minutes remaining!",
+                        title: "10 seconds remaining!",
                         body: "Please check the timer."
                       };
                     
