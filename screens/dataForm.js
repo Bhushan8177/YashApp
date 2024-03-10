@@ -35,11 +35,10 @@ const DataForm = () => {
   };
 
   return (
-    <SafeAreaView style={styles.root}>
+    <View style={styles.root}>
       <ScrollView style={styles.scroll} contentContainerStyle={{ flexGrow: 1 }}>
         <BackgroundImage>
           <Navbar />
-
           {/* Form Section */}
           <View style={styles.formContainer}>
             <TextInput
@@ -104,7 +103,7 @@ const DataForm = () => {
           </View>
         </BackgroundImage>
       </ScrollView>
-    </SafeAreaView>
+    </View>
   );
 };
 

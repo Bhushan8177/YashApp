@@ -12,7 +12,7 @@ const Home = () => {
   // const navigation = useNavigation();
 
   return (
-      <SafeAreaView style={styles.root}>
+      <View style={styles.root}>
         <BackgroundImage>
           <Common
             titleText="Bamboo Pre-treatment"
@@ -21,7 +21,7 @@ const Home = () => {
             logo={logo}
           />
         </BackgroundImage>
-      </SafeAreaView>
+      </View>
   );
 };
 
@@ -30,8 +30,5 @@ export default Home;
 const styles = StyleSheet.create({
   root: {
     flex: 1,
-    height: "100%",
-    width: "100%",
-    margin: 0,
   },
 });

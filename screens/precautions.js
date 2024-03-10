@@ -13,7 +13,9 @@ const Precautions = () => {
       <View style={styles.root}>
         <ScrollView>
           <View style={styles.container}>
-            <Navbar />
+            <View style={{paddingTop: 0}}>
+              <Navbar />
+            </View>
             <View style={styles.container1}>
               <Text style={styles.precautionHeading}>
                 सुरक्षितता मार्गदर्शक तत्त्वे.
@@ -104,7 +106,7 @@ const styles = StyleSheet.create({
     flex: 1,
     paddingVertical: 50,
     justifyContent: "space-between",
-    gap: 20,
+    gap: 10,
   },
   container1: {
     marginHorizontal: 18,
@@ -123,7 +125,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     borderWidth: 3,
     borderColor: "#3B821D",
-    marginTop: 20,
+    // marginTop: 20,
     backgroundColor: "#E8F6E8",
     borderRadius: 16,
     paddingVertical: 20,
@@ -132,6 +134,7 @@ const styles = StyleSheet.create({
     width: "100%",
     justifyContent: "center",
     alignItems: "center",
+    // marginBottom: 100,
   },
   button: {
     width: "90%",
@@ -139,8 +142,8 @@ const styles = StyleSheet.create({
     padding: 16,
     borderRadius: 16,
     alignItems: "center",
-    marginTop: 105,
-    // marginBottom: 30,
+    marginTop: 55,
+    // marginBottom: 150,
   },
   buttonText: {
     fontSize: 24,
