@@ -24,22 +24,32 @@ const Common = ({ titleText, route, subTitle, banner, buttonText, logo }) => {
       <View style={styles.container}>
         <View style={styles.container1}>
           <Text style={styles.precautionHeading}>
-            सुरक्षितता मार्गदर्शक तत्त्वे.
+          ॲप हाताळण्यासाठी सूचना
           </Text>
           <View style={styles.precautionTextContainter}>
             {/* <FlatList> */}
             <Text style={styles.precautionText}>
-              1.⁠⁠सर्वप्रथम तुमच्या सुरक्षिततेसाठी सेफ्टी शूज घाला.
+              1. ⁠आपले नांव लिहा
             </Text>
             <Text style={styles.precautionText}>
-              2. डोळ्यांच्या सुरक्षेसाठी गॉगल वापरा.
+              2. बांबूची प्रजाती निवडा किंवा प्रविष्ट करा
             </Text>
             <Text style={styles.precautionText}>
-              3.⁠कामांसाठी योग्य हातमोजे घाला.
+              3. रासायनिक वजन आणि बांबूचे वजन प्रविष्ट करा
             </Text>
             <Text style={styles.precautionText}>
-              4.⁠साइटवर तंबाखूचे सेवन टाळा.
+              4.Next दाबा
             </Text>
+            <Text style={styles.precautionText}>
+              4.तास आणि मिनिटांची संख्या प्रविष्ट करा
+            </Text>
+            <Text style={styles.precautionText}>
+              4.Click Here दाबा
+            </Text>
+            <Text style={styles.precautionText}>
+              4.प्रारंभ करण्यासाठी Start क्लिक करा
+            </Text>
+
           </View>
         </View>
       </View>
@@ -95,11 +105,11 @@ const styles = StyleSheet.create({
     alignSelf: "center",
   },
   buttonContainer: {
-    width: "100%",
     backgroundColor: "#6A793E",
     borderRadius: 16,
     marginBottom: 30,
     justifyContent: "center",
+    marginHorizontal: 10,
   },
   button: {
     minWidth: "90%",
@@ -134,7 +144,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: "space-between",
-    gap: 50,
+    gap: 100,
   },
   container1: {
     marginHorizontal: 18,
@@ -149,8 +159,8 @@ const styles = StyleSheet.create({
   precautionTextContainter: {
       //  marginTop: 15,
     paddingHorizontal: 5,
-    // display: "flex",
-    // gap: 10,
+    display: "flex",
+    gap: 5,
   },
   precautionHeading: {
     fontSize: 24,
