@@ -3,7 +3,7 @@ import React from "react";
 import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import Title from "../components/title";
 
-const Common = ({ titleText, route, subTitle, banner, buttonText, logo }) => {
+const Common = ({ titleText, route, buttonText, logo }) => {
   const navigation = useNavigation();
 
   const handleBack = () => {
