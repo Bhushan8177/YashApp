@@ -1,7 +1,6 @@
 import React from "react";
 import { ImageBackground, StyleSheet, View } from "react-native";
 
-
 const BackgroundImage = ({ children }) => {
   return (
     <ImageBackground
@@ -16,6 +15,7 @@ const BackgroundImage = ({ children }) => {
 const styles = StyleSheet.create({
   bgContainer: {
     flex: 1,
+    height: "100%",
   },
   backgroundImage: {
     flex: 1,
