@@ -5,11 +5,8 @@ import MyStack from "./navigation";
 
 export default function App() {
   return (
-    <NotifierWrapper>
-      <StatusBar style="light" />
       <NavigationContainer>
         <MyStack />
       </NavigationContainer>
-    </NotifierWrapper>
   );
 }

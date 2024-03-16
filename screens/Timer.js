@@ -12,7 +12,6 @@ import {
   View,
 } from "react-native";
 import { ScrollView } from "react-native-gesture-handler";
-import { Easing, Notifier } from "react-native-notifier";
 import { Button, TextInput } from "react-native-paper";
 import { Timer } from "react-native-stopwatch-timer";
 import BackgroundImage from "../components/background";
@@ -105,29 +104,28 @@ const TimerPro = () => {
       setExpoPushToken(token)
     );
 
-    notificationListener.current =
-      Notifications.addNotificationReceivedListener((notification) => {
-        setNotification(notification);
-      });
+    // notificationListener.current =
+    //   Notifications.addNotificationReceivedListener((notification) => {
+    //     setNotification(notification);
+    //   });
 
-    responseListener.current =
-      Notifications.addNotificationResponseReceivedListener((response) => {
-        console.log(response);
-      });
+    // responseListener.current =
+    //   Notifications.addNotificationResponseReceivedListener((response) => {
+    //     console.log(response);
+    //   });
 
-    return () => {
-      Notifications.removeNotificationSubscription(
-        notificationListener.current
-      );
-      Notifications.removeNotificationSubscription(responseListener.current);
-    };
+    // return () => {
+    //   Notifications.removeNotificationSubscription(
+    //     notificationListener.current
+    //   );
+    //   Notifications.removeNotificationSubscription(responseListener.current);
+    // };
   }, []);
 
   const totalDuration = () => {
     const hours = parseInt(formData.hours);
     const minutes = parseInt(formData.minutes);
     setTimerDuration(hours * 60 * 60 + minutes * 60);
-    setRealTime;
     console.log("Timer", timerDuration);
     if (!isTimerStart) {
       setIsTimerStart(false);
@@ -185,7 +183,7 @@ const TimerPro = () => {
                     }
                     style={styles.input}
                   />
-                  <Button onPress={totalDuration}>Display Timer</Button>
+                  <Button onPress={totalDuration}>Click Here</Button>
                 </View>
                 <View style={styles.sectionStyle}>
                   <Timer
@@ -197,20 +195,64 @@ const TimerPro = () => {
                     //To reset
                     options={options}
                     //options for the styling
-                    handleFinish={() => {
-                      Notifier.showNotification({
-                        title: "Task Completed!",
-                        description: "Completed the task successfully.",
-                        duration: 0,
-                        showAnimationDuration: 800,
-                        showEasing: Easing.bounce,
-                        onHidden: () => console.log("Hidden"),
-                        onPress: () => console.log("Press"),
-                        hideOnPress: true,
+                    handleFinish={async () => {
+                      console.log("Timer Finished");
+                      const message = {
+                        to: expoPushToken,
+                        sound: "default",
+                        title: "Timer Finished!",
+                        body: "Please close the machine."
+                      };
+                    
+                      await fetch("https://exp.host/--/api/v2/push/send", {
+                        method: "POST",
+                        headers: {
+                          Accept: "application/json",
+                          "Accept-encoding": "gzip, deflate",
+                          "Content-Type": "application/json",
+                        },
+                        body: JSON.stringify(message),
+                      });
+                      setIsTimerStart(false);
+                      setResetTimer(true);
+                      setFormData({
+                        hours: 0,
+                        minutes: 0,
                       });
                       setTimerDuration(0);
                     }}
                   />
+                  <View style={{ display: "none" }}>
+                  <Timer
+                    totalDuration={(timerDuration - 50) * seconds}
+                    //Time Duration
+                    start={isTimerStart}
+                    //To start
+                    reset={resetTimer}
+                    //To reset
+                    options={options}
+                    //options for the styling
+                    handleFinish={async () => {
+                      console.log("10 seconds left");
+                      const message = {
+                        to: expoPushToken,
+                        sound: "default",
+                        title: "10 seconds remaining!",
+                        body: "Please check the timer."
+                      };
+                    
+                      await fetch("https://exp.host/--/api/v2/push/send", {
+                        method: "POST",
+                        headers: {
+                          Accept: "application/json",
+                          "Accept-encoding": "gzip, deflate",
+                          "Content-Type": "application/json",
+                        },
+                        body: JSON.stringify(message),
+                      });
+                    }}
+                  />
+                </View>
                   <View style={styles.timerButtons}>
                     <TouchableHighlight
                       onPress={() => {
@@ -262,7 +304,7 @@ const TimerPro = () => {
 
 export default TimerPro;
 
-const styles = StyleSheet.create({
+const styles = StyleSheet.create({ 
   root: {
     flex: 1,
     height: "100%",
