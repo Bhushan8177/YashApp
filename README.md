@@ -1,3 +1,3 @@
 
 # YashApp
-added app.js, home.js, precautionss.js, built successful
+added select list in package.json and dataform.js
