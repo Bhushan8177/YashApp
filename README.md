@@ -1,3 +1,3 @@
 
 # YashApp
-added app.js, home.js, precautionss.js
+added app.js, home.js, precautionss.js, built successful
