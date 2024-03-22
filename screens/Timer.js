@@ -74,9 +74,10 @@ async function registerForPushNotificationsAsync() {
       projectId: Constants.expoConfig.extra.eas.projectId,
     });
     console.log(token);
-  } else {
-    alert("Must use physical device for Push Notifications");
-  }
+  } 
+  // else {
+  //   alert("Must use physical device for Push Notifications");
+  // }
 
   return token.data;
 }
@@ -156,73 +157,79 @@ const TimerPro = () => {
   // }, [formData]);
 
   return (
-    <>
-      <View style={styles.root}>
-        <ScrollView contentContainerStyle={{ flex: 1 }}>
-          <BackgroundImage>
-            <View style={styles.container}>
+    <View style={styles.root}>
+      <ScrollView contentContainerStyle={{ flex: 1 }}>
+        <BackgroundImage>
+          <View style={styles.container}>
+            <View>
               <Navbar />
-              <View style={styles.timer}>
-                <View style={styles.timerContent}>
-                  <TextInput
-                    label="Number of Hours (तासांची संख्या)"
-                    value={formData.hours}
-                    onChangeText={(text) =>
-                      setFormData((prevData) => ({ ...prevData, hours: text }))
-                    }
-                    style={styles.input}
-                  />
-                  <TextInput
-                    label="Number of Minutes (मिनिटांची संख्या)"
-                    value={formData.minutes}
-                    onChangeText={(text) =>
-                      setFormData((prevData) => ({
-                        ...prevData,
-                        minutes: text,
-                      }))
-                    }
-                    style={styles.input}
-                  />
-                  <Button onPress={totalDuration}>Click Here</Button>
-                </View>
-                <View style={styles.sectionStyle}>
-                  <Timer
-                    totalDuration={timerDuration * seconds}
-                    //Time Duration
-                    start={isTimerStart}
-                    //To start
-                    reset={resetTimer}
-                    //To reset
-                    options={options}
-                    //options for the styling
-                    handleFinish={async () => {
-                      console.log("Timer Finished");
-                      const message = {
-                        to: expoPushToken,
-                        sound: "default",
-                        title: "Timer Finished!",
-                        body: "Please close the machine."
-                      };
-                    
-                      await fetch("https://exp.host/--/api/v2/push/send", {
-                        method: "POST",
-                        headers: {
-                          Accept: "application/json",
-                          "Accept-encoding": "gzip, deflate",
-                          "Content-Type": "application/json",
-                        },
-                        body: JSON.stringify(message),
-                      });
-                      setIsTimerStart(false);
-                      setResetTimer(true);
-                      setFormData({
-                        hours: 0,
-                        minutes: 0,
-                      });
-                      setTimerDuration(0);
-                    }}
-                  />
-                  <View style={{ display: "none" }}>
+            </View>
+            <View style={styles.timer}>
+              <View style={styles.timerContent}>
+                <TextInput
+                  label="Number of Hours (तासांची संख्या)"
+                  value={formData.hours}
+                  onChangeText={(text) =>
+                    setFormData((prevData) => ({ ...prevData, hours: text }))
+                  }
+                  style={styles.input}
+                />
+                <TextInput
+                  label="Number of Minutes (मिनिटांची संख्या)"
+                  value={formData.minutes}
+                  onChangeText={(text) =>
+                    setFormData((prevData) => ({
+                      ...prevData,
+                      minutes: text,
+                    }))
+                  }
+                  style={styles.input}
+                />
+                <TouchableOpacity
+                onPress={totalDuration}
+                style={styles.clickHereButton}
+              >
+                <Text style={styles.clickHereButtonText}>Display Timer</Text>
+              </TouchableOpacity>
+              </View>
+              <View style={styles.sectionStyle}>
+                <Timer
+                  totalDuration={timerDuration * seconds}
+                  //Time Duration
+                  start={isTimerStart}
+                  //To start
+                  reset={resetTimer}
+                  //To reset
+                  options={options}
+                  //options for the styling
+                  handleFinish={async () => {
+                    console.log("Timer Finished");
+                    const message = {
+                      to: expoPushToken,
+                      sound: "default",
+                      title: "Timer Finished!",
+                      body: "Please close the machine.",
+                    };
+
+                    await fetch("https://exp.host/--/api/v2/push/send", {
+                      method: "POST",
+                      headers: {
+                        Accept: "application/json",
+                        "Accept-encoding": "gzip, deflate",
+                        "Content-Type": "application/json",
+                      },
+                      body: JSON.stringify(message),
+                    });
+                    setIsTimerStart(false);
+                    setResetTimer(true);
+                    setFormData({
+                      hours: 0,
+                      minutes: 0,
+                    });
+                    setTimerDuration(0);
+                  }}
+                />
+                <View style={{ display: "none" }}>
                   <Timer
                     totalDuration={(timerDuration - 50) * seconds}
                     //Time Duration
@@ -238,9 +245,9 @@ const TimerPro = () => {
                         to: expoPushToken,
                         sound: "default",
                         title: "10 seconds remaining!",
-                        body: "Please check the timer."
+                        body: "Please check the timer.",
                       };
-                    
+
                       await fetch("https://exp.host/--/api/v2/push/send", {
                         method: "POST",
                         headers: {
@@ -253,52 +260,51 @@ const TimerPro = () => {
                     }}
                   />
                 </View>
-                  <View style={styles.timerButtons}>
-                    <TouchableHighlight
-                      onPress={() => {
-                        if (timerDuration === 0) {
-                          // Alert the user when the timer duration is 0
-                          alert(
-                            "Please set a non-zero timer duration before starting."
-                          );
-                        } else {
-                          setIsTimerStart(!isTimerStart);
-                          setResetTimer(false);
-                        }
-                      }}
-                    >
-                      <Text style={styles.timeButtonsText}>
-                        {!isTimerStart ? "START" : "STOP"}
-                      </Text>
-                    </TouchableHighlight>
-                    <TouchableHighlight
-                      onPress={() => {
-                        setIsTimerStart(false);
-                        setResetTimer(true);
-                        setFormData({
-                          hours: 0,
-                          minutes: 0,
-                        });
-                      }}
-                    >
-                      <Text style={styles.timeButtonsText}>RESET</Text>
-                    </TouchableHighlight>
-                  </View>
+                <View style={styles.timerButtons}>
+                  <TouchableHighlight
+                    onPress={() => {
+                      if (timerDuration === 0) {
+                        // Alert the user when the timer duration is 0
+                        alert(
+                          "Please set a non-zero timer duration before starting."
+                        );
+                      } else {
+                        setIsTimerStart(!isTimerStart);
+                        setResetTimer(false);
+                      }
+                    }}
+                  >
+                    <Text style={styles.timeButtonsText}>
+                      {!isTimerStart ? "START" : "STOP"}
+                    </Text>
+                  </TouchableHighlight>
+                  <TouchableHighlight
+                    onPress={() => {
+                      setIsTimerStart(false);
+                      setResetTimer(true);
+                      setFormData({
+                        hours: 0,
+                        minutes: 0,
+                      });
+                    }}
+                  >
+                    <Text style={styles.timeButtonsText}>RESET</Text>
+                  </TouchableHighlight>
                 </View>
               </View>
-              <View style={styles.buttonContainer}>
-                <TouchableOpacity
-                  onPress={() => navigation.navigate("Home")}
-                  style={styles.button}
-                >
-                  <Text style={styles.buttonText}>Go Back To Home</Text>
-                </TouchableOpacity>
-              </View>
             </View>
-          </BackgroundImage>
-        </ScrollView>
-      </View>
-    </>
+            <View style={styles.buttonContainer}>
+              <TouchableOpacity
+                onPress={() => navigation.navigate("Home")}
+                style={styles.button}
+              >
+                <Text style={styles.buttonText}>Go Back To Home</Text>
+              </TouchableOpacity>
+            </View>
+          </View>
+        </BackgroundImage>
+      </ScrollView>
+    </View>
   );
 };
 
@@ -369,6 +375,21 @@ const styles = StyleSheet.create({
     fontSize: 20,
     backgroundColor: "rgb(0,0,0)",
     padding: 10,
+    fontWeight: "600",
+    color: "white",
+  },
+  clickHereButton: {
+    width: "60%",
+    alignSelf: "center",
+    backgroundColor: "#6A793E",
+    paddingVertical: 12,
+    paddingHorizontal: 18,
+    borderRadius: 16,
+    alignItems: "center",
+    marginBottom: 30,
+  },
+  clickHereButtonText: {
+    fontSize: 20,
     fontWeight: "600",
     color: "white",
   },

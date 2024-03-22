@@ -3,7 +3,7 @@ import React from "react";
 import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import Title from "../components/title";
 
-const navbar = () => {
+const Navbar = () => {
   const navigation = useNavigation();
   const handleBack = () => {
     navigation.goBack();
@@ -13,31 +13,31 @@ const navbar = () => {
       <TouchableOpacity onPress={handleBack} style={styles.backButton}>
         <Text style={styles.backButtonText}>Back</Text>
       </TouchableOpacity>
-      <View style={styles.titleContainer}>
-        {/* <Image source={logo} style={styles.logo} resizeMode="contain" /> */}
+      {/* <View style={styles.titleContainer}> */}
         <Title />
-      </View>
+      {/* </View> */}
     </View>
   );
 };
 
-export default navbar;
+export default Navbar;
 
 const styles = StyleSheet.create({
   logoContainer: {
-    flex: 1,
     padding: 9,
     flexDirection: "row",
     gap: 40,
-    justifyContent: "space-between",
-    alignItems: "center",
+    alignItems: "center", 
+    marginTop: 50,
   },
   titleContainer: {
-    display: "flex",
     flexDirection: "row",
+    gap: 16,
+    paddingLeft: 40,
+    justifyContent: "flex-start",
+    // justifyContent: "center",
     alignItems: "center",
-    gap: 12,
-    marginRight: 80,
+    paddingTop: 40,
   },
   logo: {
     width: 60,

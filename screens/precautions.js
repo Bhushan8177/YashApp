@@ -13,7 +13,7 @@ const Precautions = () => {
       <View style={styles.root}>
         <ScrollView>
           <View style={styles.container}>
-            <View style={{paddingTop: 0}}>
+            <View>
               <Navbar />
             </View>
             <View style={styles.container1}>
@@ -99,14 +99,10 @@ export default Precautions;
 const styles = StyleSheet.create({
   root: {
     flex: 1,
-    height: "100%",
-    width: "100%",
   },
   container: {
     flex: 1,
-    paddingVertical: 50,
-    justifyContent: "space-between",
-    gap: 10,
+    gap: 30,
   },
   container1: {
     marginHorizontal: 18,

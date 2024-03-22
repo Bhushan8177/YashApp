@@ -15,7 +15,7 @@ const Home = () => {
       <View style={styles.root}>
         <BackgroundImage>
           <Common
-            titleText="Bamboo Pre-treatment"
+            titleText="Dr. Bamboo"
             route="DataForm"
             buttonText="Start"
             logo={logo}

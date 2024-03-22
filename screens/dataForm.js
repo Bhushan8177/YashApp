@@ -44,7 +44,7 @@ const DataForm = () => {
     <BackgroundImage>
       <View style={styles.root}>
         <ScrollView>
-            <View style={{ marginTop: 30}}>
+            <View style={{marginBottom: 50}}>
               <Navbar />
             </View>
           {/* Form Section */}

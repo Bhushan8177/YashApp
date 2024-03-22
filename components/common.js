@@ -13,11 +13,11 @@ const Common = ({ titleText, route, buttonText, logo }) => {
   return (
     <View style={styles.container}>
       <View style={styles.logoContainer}>
-        {titleText !== "Bamboo Pre-treatment" && (
+        {titleText !== "Dr. Bamboo" && (
           <TouchableOpacity onPress={handleBack} style={styles.backButton}>
             <Text style={styles.backButtonText}>Back</Text>
           </TouchableOpacity>
-        )}
+        )} 
         <Image source={logo} style={styles.logo} resizeMode="contain" />
         <Title />
       </View>
@@ -71,8 +71,6 @@ export default Common;
 const styles = StyleSheet.create({
   root: {
     flex: 1,
-    height: "100%",
-    width: "100%",
   },
   banner: {
     height: 400,
@@ -86,9 +84,6 @@ const styles = StyleSheet.create({
     alignItems: "center",
     opacity: 0.9,
   },
-  // bannerContainer: {
-  //   flex: 1,
-  // },
   container: {
     padding: 9,
     height: "100%",
@@ -126,7 +121,9 @@ const styles = StyleSheet.create({
   logoContainer: {
     flexDirection: "row",
     gap: 16,
-    justifyContent: "center",
+    paddingLeft: 40,
+    justifyContent: "flex-start",
+    // justifyContent: "center",
     alignItems: "center",
     paddingTop: 40,
   },
