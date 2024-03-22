@@ -25,26 +25,7 @@ Notifications.setNotificationHandler({
   }),
 });
 
-// Can use this function below or use Expo's Push Notification Tool from: https://expo.dev/notifications
-async function sendPushNotification(expoPushToken) {
-  const message = {
-    to: expoPushToken,
-    sound: "default",
-    title: "Original Title",
-    body: "And here is the body!",
-    data: { someData: "goes here" },
-  };
 
-  await fetch("https://exp.host/--/api/v2/push/send", {
-    method: "POST",
-    headers: {
-      Accept: "application/json",
-      "Accept-encoding": "gzip, deflate",
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(message),
-  });
-}
 
 async function registerForPushNotificationsAsync() {
   let token;
@@ -105,22 +86,6 @@ const TimerPro = () => {
       setExpoPushToken(token)
     );
 
-    // notificationListener.current =
-    //   Notifications.addNotificationReceivedListener((notification) => {
-    //     setNotification(notification);
-    //   });
-
-    // responseListener.current =
-    //   Notifications.addNotificationResponseReceivedListener((response) => {
-    //     console.log(response);
-    //   });
-
-    // return () => {
-    //   Notifications.removeNotificationSubscription(
-    //     notificationListener.current
-    //   );
-    //   Notifications.removeNotificationSubscription(responseListener.current);
-    // };
   }, []);
 
   const totalDuration = () => {
@@ -141,20 +106,6 @@ const TimerPro = () => {
     }
   };
 
-  // useEffect(() => {
-  //   // Calculate total duration in seconds when formData.hours or formData.minutes change
-  //   const totalSeconds =
-  //     parseInt(formData.hours) * 60 * 60 + parseInt(formData.minutes, 10) * 60;
-  //   if (
-  //     timerDuration === NaN ||
-  //     timerDuration === undefined ||
-  //     timerDuration === null
-  //   ) {
-  //     setTimerDuration(0);
-  //   }
-  //   setTimerDuration(totalSeconds);
-  //   console.log("Timer", timerDuration);
-  // }, [formData]);
 
   return (
     <View style={styles.root}>
@@ -231,7 +182,7 @@ const TimerPro = () => {
                 />
                 <View style={{ display: "none" }}>
                   <Timer
-                    totalDuration={(timerDuration - 50) * seconds}
+                    totalDuration={(timerDuration - 600) * seconds}
                     //Time Duration
                     start={isTimerStart}
                     //To start
@@ -244,7 +195,7 @@ const TimerPro = () => {
                       const message = {
                         to: expoPushToken,
                         sound: "default",
-                        title: "10 seconds remaining!",
+                        title: "10 minutes remaining!",
                         body: "Please check the timer.",
                       };
 
